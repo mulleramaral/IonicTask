@@ -16,8 +16,9 @@ app.run(function($ionicPlatform) {
 
 app.controller('mainController',function($scope){
    var tasks = new getTasks();
-
    $scope.lista = tasks.items;
+
+   $scope.exibeFinalizadas = false;
 
    // Marca True ou False
    $scope.onMarkTask = function(item){
@@ -25,4 +26,7 @@ app.controller('mainController',function($scope){
      item.finalizada = !item.finalizada;
    }
 
+   $scope.esconderFinalizada = function(item){
+      return item.finalizada && !$scope.exibeFinalizadas;
+   }
 });
